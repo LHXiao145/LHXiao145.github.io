@@ -9,17 +9,17 @@
   
   
   
-  <meta name="description" content="什么是事件冒泡事件冒泡：在一个对象上触发某类事件（比如单击事件），如果该对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向该对象的父级对象传播，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。  下面通过一个小例子来解释代码如下:1234567">
+  <meta name="description" content="什么是事件冒泡要知道怎么阻止事件冒泡，首先我们来看一下什么是事件冒泡。 事件冒泡即在一个对象上触发某类事件（比如单击事件），如果该对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，然后向该对象的父级对象传播（如果没有定义此事件的处理程序，那么这个事件会直接向父级对象传播），直至它到达了对象层次的最顶层即document对象（有些浏览器是window），父级对象所有同类事件都被激活。 下面">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阻止事件冒泡">
 <meta property="og:url" content="http://lhxiao145.github.io/2017/04/15/cross-domain/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="什么是事件冒泡事件冒泡：在一个对象上触发某类事件（比如单击事件），如果该对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向该对象的父级对象传播，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。  下面通过一个小例子来解释代码如下:1234567">
-<meta property="og:updated_time" content="2017-04-20T12:43:51.913Z">
+<meta property="og:description" content="什么是事件冒泡要知道怎么阻止事件冒泡，首先我们来看一下什么是事件冒泡。 事件冒泡即在一个对象上触发某类事件（比如单击事件），如果该对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，然后向该对象的父级对象传播（如果没有定义此事件的处理程序，那么这个事件会直接向父级对象传播），直至它到达了对象层次的最顶层即document对象（有些浏览器是window），父级对象所有同类事件都被激活。 下面">
+<meta property="og:updated_time" content="2017-04-21T11:11:28.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阻止事件冒泡">
-<meta name="twitter:description" content="什么是事件冒泡事件冒泡：在一个对象上触发某类事件（比如单击事件），如果该对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向该对象的父级对象传播，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。  下面通过一个小例子来解释代码如下:1234567">
+<meta name="twitter:description" content="什么是事件冒泡要知道怎么阻止事件冒泡，首先我们来看一下什么是事件冒泡。 事件冒泡即在一个对象上触发某类事件（比如单击事件），如果该对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，然后向该对象的父级对象传播（如果没有定义此事件的处理程序，那么这个事件会直接向父级对象传播），直至它到达了对象层次的最顶层即document对象（有些浏览器是window），父级对象所有同类事件都被激活。 下面">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -141,15 +141,16 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="什么是事件冒泡"><a href="#什么是事件冒泡" class="headerlink" title="什么是事件冒泡"></a>什么是事件冒泡</h3><p>事件冒泡：在一个对象上触发某类事件（比如单击事件），如果该对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向该对象的父级对象传播，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。 </p>
+        <h3 id="什么是事件冒泡"><a href="#什么是事件冒泡" class="headerlink" title="什么是事件冒泡"></a>什么是事件冒泡</h3><p>要知道怎么阻止事件冒泡，首先我们来看一下什么是事件冒泡。</p>
+<p>事件冒泡即在一个对象上触发某类事件（比如单击事件），如果该对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，然后向该对象的父级对象传播（如果没有定义此事件的处理程序，那么这个事件会直接向父级对象传播），直至它到达了对象层次的最顶层即document对象（有些浏览器是window），父级对象所有同类事件都被激活。</p>
 <p>下面通过一个小例子来解释<br>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">	&lt;title&gt;事件冒泡&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div id=&quot;one&quot; onclick=&quot;alert(&apos;one&apos;)&quot;&gt;</div><div class="line">		&lt;span&gt;one&lt;/span&gt;</div><div class="line">		&lt;div id=&quot;two&quot; onclick=&quot;alert(&apos;two&apos;)&quot;&gt;</div><div class="line">			&lt;span&gt;two&lt;/span&gt;</div><div class="line">			&lt;a href=&quot;http://www.baidu.com&quot; id=&quot;three&quot; onclick=&quot;alert(&apos;three&apos;)&quot;&gt;</div><div class="line">				&lt;span&gt;百度一下&lt;/span&gt;</div><div class="line">			&lt;/a&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<p>比如上面这个页面: ID 分别为”one”,”two”,”three”的三个标签呈嵌套关系，而且他们都有各自的click事件。<br>运行页面，点击“three”,会依次弹出：three —-&gt; two —-&gt; one —-&gt;最后跳转到百度。<br>这就是事件冒泡，本来我只点击ID为 three 的标签，但是却还执行了三个alert操作。</p>
+<p>比如上面这个页面: ID 分别为”one”,”two”,”three”的三个标签呈嵌套关系，而且他们都有各自的click事件。<br>运行页面，点击“百度一下”,会依次弹出：three —-&gt; two —-&gt; one —-&gt;最后跳转到百度。<br>这就是事件冒泡，本来我只点击ID为 three 的标签，但是却还执行了三个alert操作。</p>
 <p>所以事件冒泡过程（以标签ID表示）：three —-&gt; Two —-&gt; One。从最里层冒泡到最外层。 </p>
 <h3 id="如何阻止事件冒泡"><a href="#如何阻止事件冒泡" class="headerlink" title="如何阻止事件冒泡?"></a>如何阻止事件冒泡?</h3><h4 id="1、event-stopPropagation"><a href="#1、event-stopPropagation" class="headerlink" title="1、event.stopPropagation();"></a>1、event.stopPropagation();</h4><p>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt; </div><div class="line">$(function()&#123; </div><div class="line">	$(&quot;#three&quot;).click(function(event)&#123; </div><div class="line">		event.stopPropagation(); </div><div class="line">	&#125;); </div><div class="line">&#125;); </div><div class="line">&lt;script&gt;</div></pre></td></tr></table></figure></p>
 <p>再点击“百度一下”，会弹出：three ,然后跳转到百度。不会再附加弹出 two、one。</p>
 <h4 id="2、return-false"><a href="#2、return-false" class="headerlink" title="2、return false;"></a>2、return false;</h4><p>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt; </div><div class="line">	$(function()&#123; </div><div class="line">		$(&quot;#three&quot;).click(function(event)&#123; </div><div class="line">			return	false; </div><div class="line">		&#125;); </div><div class="line">	&#125;); </div><div class="line">&lt;script&gt;</div></pre></td></tr></table></figure></p>
 <p>再点击“百度一下”，会弹出：three ，不会弹出 two ，one。 同时也不会跳转。</p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>由此可以看出：<br>1.event.stopPropagation();<br>事件处理过程中，阻止了事件冒泡，但不会阻击默认行为（它就执行了超链接的跳转）<br>2.return false;<br>事件处理过程中，阻止了事件冒泡，也阻止了默认行为（比如刚才它就没有执行超链接的跳转）<br>还有一种有冒泡有关的：</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>由此可以看出：<br>1.event.stopPropagation();<br>事件处理过程中，阻止了事件冒泡，但不会阻击默认行为（它就执行了超链接的跳转）<br>2.return false;<br>事件处理过程中，阻止了事件冒泡，也阻止了默认行为（比如刚才它就没有执行超链接的跳转） </p>
 <h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><p>阻止默认事件： event.preventDefault(); </p>
 <p>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt; </div><div class="line">	$(function()&#123; </div><div class="line">		$(&quot;#three&quot;).click(function(event)&#123; </div><div class="line">			event.preventDefault(); </div><div class="line">		&#125;); </div><div class="line">	&#125;); </div><div class="line">&lt;script&gt;</div></pre></td></tr></table></figure></p>
 <p>再点击“百度一下”，会弹出：three ，two ，one。 但也不会跳转。</p>
@@ -306,11 +307,6 @@ var themeMenus = {};
 
 
 
-
-
-  <div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-  </div>
 
 
 
